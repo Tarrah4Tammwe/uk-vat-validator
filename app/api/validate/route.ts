@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const HMRC_TOKEN_URL = "https://api.service.hmrc.gov.uk/oauth/token";
-const HMRC_VAT_URL = "https://api.service.hmrc.gov.uk/organisations/vat/check-vat-number/lookup";
+const isSandbox = process.env.HMRC_ENVIRONMENT === "sandbox";
+const HMRC_BASE = isSandbox
+  ? "https://test-api.service.hmrc.gov.uk"
+  : "https://api.service.hmrc.gov.uk";
+const HMRC_TOKEN_URL = `${HMRC_BASE}/oauth/token`;
+const HMRC_VAT_URL = `${HMRC_BASE}/organisations/vat/check-vat-number/lookup`;
 
 // In-memory token cache (lives for the duration of the serverless function warm instance)
 // Tokens are valid for 4 hours per HMRC docs
