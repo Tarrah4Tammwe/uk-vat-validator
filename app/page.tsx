@@ -219,6 +219,40 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Batch */}
+        <section className="section">
+          <h2>Batch validation — up to 50 numbers</h2>
+          <div className="code-card">
+            <div className="code-card-header">
+              <span className="code-lang">JSON · POST /api/validate/batch</span>
+              <span className="code-tag">Unique to this API</span>
+            </div>
+            <pre>{`{
+  `}<span className="key">&quot;vat_numbers&quot;</span>{`: [
+    `}<span className="str">&quot;GB123456789&quot;</span>{`,
+    `}<span className="str">&quot;XI987654321&quot;</span>{`,
+    `}<span className="str">&quot;GB000000000&quot;</span>{`
+  ]
+}`}</pre>
+          </div>
+          <div className="code-card" style={{ marginTop: "12px" }}>
+            <div className="code-card-header">
+              <span className="code-lang">JSON</span>
+              <span className="code-tag">200 OK</span>
+            </div>
+            <pre>{`{
+  `}<span className="key">&quot;total&quot;</span>{`: `}<span className="num">3</span>{`,
+  `}<span className="key">&quot;valid&quot;</span>{`: `}<span className="num">2</span>{`,
+  `}<span className="key">&quot;invalid&quot;</span>{`: `}<span className="num">1</span>{`,
+  `}<span className="key">&quot;results&quot;</span>{`: [
+    { `}<span className="key">&quot;vat_number&quot;</span>{`: `}<span className="str">&quot;GB123456789&quot;</span>{`, `}<span className="key">&quot;valid&quot;</span>{`: `}<span className="bool-true">true</span>{`, `}<span className="key">&quot;business_name&quot;</span>{`: `}<span className="str">&quot;EXAMPLE LTD&quot;</span>{` },
+    { `}<span className="key">&quot;vat_number&quot;</span>{`: `}<span className="str">&quot;XI987654321&quot;</span>{`, `}<span className="key">&quot;valid&quot;</span>{`: `}<span className="bool-true">true</span>{`, `}<span className="key">&quot;business_name&quot;</span>{`: `}<span className="str">&quot;NI COMPANY LTD&quot;</span>{` },
+    { `}<span className="key">&quot;vat_number&quot;</span>{`: `}<span className="str">&quot;GB000000000&quot;</span>{`, `}<span className="key">&quot;valid&quot;</span>{`: `}<span className="bool-null">false</span>{` }
+  ]
+}`}</pre>
+          </div>
+        </section>
+
         {/* Response valid */}
         <section className="section">
           <h2>Response · Valid</h2>

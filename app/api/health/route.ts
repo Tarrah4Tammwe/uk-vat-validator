@@ -14,7 +14,12 @@ export async function GET() {
       {
         method: "POST",
         path: "/api/validate",
-        description: "Validate a UK VAT number via HMRC v2. Optionally include requester_vat_number for verified check with consultation number.",
+        description: "Validate a single UK VAT number via HMRC v2.",
+      },
+      {
+        method: "POST",
+        path: "/api/validate/batch",
+        description: "Validate up to 50 VAT numbers in one request. Returns per-number results plus summary counts.",
       },
     ],
     timestamp: new Date().toISOString(),
