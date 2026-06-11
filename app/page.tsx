@@ -3,9 +3,10 @@ export default function Home() {
     <main style={{ fontFamily: "monospace", maxWidth: 720, margin: "60px auto", padding: "0 20px" }}>
       <h1>🇬🇧 UK VAT Number Validator API</h1>
       <p>
-        Real-time UK VAT validation against HMRC's official v2 API. Returns business name,
+        Real-time UK VAT validation against HMRC&apos;s official v2 API. Returns business name,
         registered address, and optional consultation number for audit trails.
         Handles all UK VAT formats including GB/XI prefix and branch trader numbers.
+
       </p>
 
       <h2>Endpoint</h2>
