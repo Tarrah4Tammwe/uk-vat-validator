@@ -64,7 +64,6 @@ async function validateOne(
       normalised,
       valid: false,
       error: "Invalid format",
-      source: "format_check",
     };
   }
 
@@ -77,7 +76,7 @@ async function validateOne(
     });
 
     if (res.status === 404) {
-      return { vat_number: raw, normalised, valid: false, source: "hmrc" };
+      return { vat_number: raw, normalised, valid: false };
     }
 
     if (!res.ok) {
@@ -86,7 +85,6 @@ async function validateOne(
         normalised,
         valid: false,
         error: `HMRC error ${res.status}`,
-        source: "hmrc",
       };
     }
 
@@ -108,7 +106,6 @@ async function validateOne(
           }
         : null,
       request_date: data.processingDate || null,
-      source: "hmrc_v2",
     };
   } catch {
     return {
@@ -116,7 +113,6 @@ async function validateOne(
       normalised,
       valid: false,
       error: "Request failed",
-      source: "hmrc",
     };
   }
 }

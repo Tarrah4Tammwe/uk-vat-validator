@@ -99,7 +99,6 @@ export async function POST(req: NextRequest) {
         vat_number: raw,
         normalised,
         error: formatCheck.error,
-        source: "format_check",
       },
       { status: 200 }
     );
@@ -143,7 +142,6 @@ export async function POST(req: NextRequest) {
           valid: false,
           vat_number: raw,
           normalised,
-          source: "hmrc",
         },
         { status: 200 }
       );
@@ -189,7 +187,6 @@ export async function POST(req: NextRequest) {
         consultation_number: data.consultationNumber || null,
         request_date: data.processingDate || null,
         verified_check: !!requesterNormalised,
-        source: "hmrc_v2",
       },
       { status: 200 }
     );
